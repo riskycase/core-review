@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/design_default_color_primary">
+        android:background="@color/amber_500">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
