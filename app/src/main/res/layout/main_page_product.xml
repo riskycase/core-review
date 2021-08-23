@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/main_product">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/product_card"
+        android:layout_width="96dp"
+        android:layout_height="144dp"
+        android:backgroundTint="@color/white"
+        android:layout_margin="@dimen/margin">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/product"
+            android:layout_margin="@dimen/marginHalf"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+        android:id="@+id/product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currency_symbol"
+                android:textSize="27sp"
+                android:layout_margin="@dimen/marginHalf"/>
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/product_add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="@string/add_to_cart"/>
+
+    </LinearLayout>
+
+</LinearLayout>
