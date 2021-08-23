@@ -6,4 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".ui.AccountActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/amber_500">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="@dimen/marginDouble"
+        app:layout_constraintTop_toBottomOf="@id/AppBar">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/user_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_out"
+        app:layout_constraintTop_toBottomOf="@id/AppBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

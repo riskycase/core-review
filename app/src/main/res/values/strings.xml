@@ -118,4 +118,9 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="currency_symbol">$</string>
+    <string name="count">Count:</string>
+    <string name="checkout">Checkout</string>
+    <string name="total_price_text">Price to pay: $</string>
+    <string name="cart_count">Number of products</string>
+    <string name="sign_out">Sign out</string>
 </resources>

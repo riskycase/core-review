@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -57,7 +58,7 @@ class ProductPersistence(
         return result.toList()
     }
 
-    fun getCount() : Int {
+    fun getTotalCount() : Int {
         var result : Int = 0
         val db = this.readableDatabase
         val cursor = db.query(
@@ -78,19 +79,36 @@ class ProductPersistence(
         return result
     }
 
+    fun getProductCount(id: Int) : Int {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            myTableName,
+            arrayOf(keyCount),
+            "$keyId=?",
+            arrayOf(id.toString()),
+            null,
+            null,
+            null
+        )
+        val count = cursor.count
+        db.close()
+        return count
+    }
+
     fun addProduct(product: Product) {
         val db = this.writableDatabase
         val cursor = db.query(
             myTableName,
             arrayOf(keyCount),
-            null,
-            null,
+            "$keyId=?",
+            arrayOf(product.id.toString()),
             null,
             null,
             "$keyId ASC"
         )
         val values = ContentValues()
-        if(cursor.moveToFirst()) {
+        if(cursor.count > 0) {
+            cursor.moveToFirst()
             values.put(keyCount, cursor.getInt(0) + 1)
             db.update(myTableName, values, "$keyId =?",  arrayOf(product.id.toString()))
         }
@@ -106,6 +124,12 @@ class ProductPersistence(
 
             db.insert(myTableName, null, values)
         }
+        db.close()
+    }
+
+    fun removeAll() {
+        val db = this.writableDatabase
+        db.delete(myTableName, null, null)
         db.close()
     }
 

@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".ui.CartActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/amber_500">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="fill"
+        android:padding="@dimen/marginHalf"
+        app:layout_constraintTop_toBottomOf="@id/AppBar"
+        app:layout_constraintBottom_toTopOf="@id/checkout_button">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="fill"
+                android:layout_gravity="start"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_price_text"/>
+            <TextView
+                android:id="@+id/product_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="10" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cart_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/checkout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/LinearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/checkout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
