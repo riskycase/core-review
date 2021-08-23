@@ -1,7 +1,10 @@
 package com.riskycase.corereview.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +33,21 @@ class ViewProductActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.product_description).text = product.description
         findViewById<Button>(R.id.product_add_to_cart).setOnClickListener {
             productPersistence.addProduct(product)
-            Toast.makeText(applicationContext, productPersistence.getCount().toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_view, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_cart -> {
+                startActivity(Intent(baseContext, CartActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
